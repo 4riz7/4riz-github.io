@@ -65,11 +65,13 @@ function sendTask() {
 
 function sendHabit() {
     const text = document.getElementById('habitInput').value.trim();
+    const time = document.getElementById('habitTimeInput').value;
     if (!text) return;
 
     sendData({
         action: "add_habit",
-        text: text
+        text: text,
+        time: time
     });
 }
 
