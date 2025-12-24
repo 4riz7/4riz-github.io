@@ -119,5 +119,8 @@ function sendAction(actionName) {
 // Helper to send data
 function sendData(data) {
     tg.sendData(JSON.stringify(data));
-    tg.close();
+    // Telegram automatically parses this and closes the WebApp.
+    // If we want to keep it open, we must use CloudStorage or external API,
+    // which is not possible with GitHub Pages + Local Bot setup.
+    // So we just let it accept the data.
 }
