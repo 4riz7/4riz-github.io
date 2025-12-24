@@ -34,12 +34,31 @@ function selectCategory(el, category) {
     document.querySelectorAll('.tag').forEach(t => t.classList.remove('selected'));
     el.classList.add('selected');
     document.getElementById('categoryInput').value = category;
+
+    // Hide custom input if standard selected
+    document.getElementById('custom-cat-group').style.display = 'none';
+}
+
+function toggleCustomCategory() {
+    document.querySelectorAll('.tag').forEach(t => t.classList.remove('selected'));
+    document.getElementById('add-cat-btn').classList.add('selected');
+    document.getElementById('categoryInput').value = '__custom__';
+    document.getElementById('custom-cat-group').style.display = 'flex';
 }
 
 // Actions
 function sendExpense() {
     const amount = document.getElementById('amountInput').value;
-    const category = document.getElementById('categoryInput').value;
+    let category = document.getElementById('categoryInput').value;
+
+    if (category === '__custom__') {
+        const customText = document.getElementById('customCategoryInput').value.trim();
+        if (!customText) {
+            tg.showAlert("Введите название категории!");
+            return;
+        }
+        category = customText;
+    }
 
     if (!amount || !category) {
         tg.showAlert("Введите сумму и выберите категорию!");

@@ -36,10 +36,18 @@
                         <div class="tag" onclick="selectCategory(this, 'Дом')">🏠 Дом</div>
                         <div class="tag" onclick="selectCategory(this, 'Развлечения')">🎬 Развлечения</div>
                         <div class="tag" onclick="selectCategory(this, 'Другое')">🛍 Другое</div>
+                        <div class="tag" id="add-cat-btn" onclick="toggleCustomCategory()">➕</div>
                     </div>
-                    <input type="hidden" id="categoryInput">
 
+                    <div id="custom-cat-group" class="input-group" style="display: none;">
+                        <label>Своя категория</label>
+                        <input type="text" id="customCategoryInput" placeholder="Название категории">
+                    </div>
+
+                    <input type="hidden" id="categoryInput">
                     <button class="btn-main" onclick="sendExpense()">Добавить расход</button>
+                    <button class="btn-sec" style="margin-top:10px;" onclick="sendAction('get_stats')">📊 Моя
+                        статистика</button>
                 </div>
             </div>
 
